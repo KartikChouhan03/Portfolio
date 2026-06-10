@@ -1,6 +1,6 @@
-# 🧠 Neural Portfolio — Kartik Chouhan
+# Portfolio — Kartik Chouhan
 
-A premium, highly interactive developer portfolio built with **Next.js 16 (App Router, Turbopack, React 19)**, custom glassmorphic CSS, and fluid **Framer Motion** animations. 
+A highly interactive developer portfolio built with **Next.js 16 (App Router, Turbopack, React 19)**, custom glassmorphic CSS, and fluid **Framer Motion** animations. 
 
 Designed with a cybernetic, dark-mode terminal aesthetic tailored for an **AI, Machine Learning, and Full-Stack Software Engineer**.
 
