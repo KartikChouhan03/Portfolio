@@ -68,7 +68,7 @@ export function Footer() {
     <footer className={styles.footer} role="contentinfo">
       <div className="container">
         <div className={styles.wrapper}>
-          
+
           {/* Logo / branding */}
           <div className={styles.brand}>
             <span className={styles.monogram}>
@@ -112,7 +112,7 @@ export function Footer() {
             <p className={styles.copyright}>
               © {currentYear} {meta.name}. All rights reserved.
             </p>
-            <p className={styles.location}>Architected in {meta.location}</p>
+            <p className={styles.location}>{meta.location}</p>
           </div>
 
           {/* Back to top button */}
@@ -124,7 +124,7 @@ export function Footer() {
           >
             <ArrowUp size={16} />
           </button>
-          
+
         </div>
       </div>
     </footer>
