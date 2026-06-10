@@ -24,6 +24,7 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
@@ -66,4 +67,50 @@ button {
 
 .section-padding {
   padding-block: clamp(4rem, 8vw, 6.5rem);
+}
+
+/* ── Intro Loading & Reveal Sequence ──────────────────────────────────────── */
+
+html.intro-loading,
+html.intro-completing,
+html.intro-transforming,
+body.intro-loading,
+body.intro-completing,
+body.intro-transforming {
+  overflow: hidden !important;
+  height: 100vh !important;
+  pointer-events: none !important;
+}
+
+body.intro-loading header,
+body.intro-loading main,
+body.intro-loading footer,
+body.intro-completing header,
+body.intro-completing main,
+body.intro-completing footer {
+  opacity: 0 !important;
+  transform: translateY(16px) !important;
+  pointer-events: none !important;
+}
+
+body.intro-transforming header,
+body.intro-transforming main,
+body.intro-transforming footer {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+  pointer-events: none !important;
+  transition: 
+    opacity 0.8s var(--ease-expo-out) 0.1s,
+    transform 0.8s var(--ease-expo-out) 0.1s !important;
+}
+
+body.intro-done header,
+body.intro-done main,
+body.intro-done footer {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+  transition: 
+    opacity 0.8s var(--ease-expo-out),
+    transform 0.8s var(--ease-expo-out);
 }

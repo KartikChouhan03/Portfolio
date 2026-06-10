@@ -6,6 +6,74 @@ import type { Skill } from '@/types';
 import { cn } from '@/lib/utils';
 import styles from './SkillMap.module.css';
 
+const LOGO_MAP: Record<string, string> = {
+  python: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg',
+  pytorch: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/pytorch/pytorch-original.svg',
+  nodejs: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg',
+  cpp: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-original.svg',
+  react: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg',
+  typescript: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg',
+  fastapi: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/fastapi/fastapi-original.svg',
+  django: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/django/django-plain.svg',
+  mongodb: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg',
+  postgresql: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg',
+  'scikit-learn': 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/scikitlearn/scikitlearn-original.svg',
+  opencv: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/opencv/opencv-original.svg',
+  git: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg',
+  tailwind: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg',
+  express: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/express/express-original.svg',
+  sqlite: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sqlite/sqlite-original.svg',
+  linux: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linux/linux-original.svg',
+  figma: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/figma/figma-original.svg',
+  transformers: 'https://huggingface.co/front/assets/huggingface_logo-noborder.svg',
+};
+
+function renderNodeContent(skillId: string, ring: string) {
+  if (skillId === 'computer-vision') {
+    return (
+      <g>
+        <circle r="12" fill="#12141c" stroke="var(--border-default)" strokeWidth="1.2" />
+        <path
+          d="M-7,0 C-3.5,-4 3.5,-4 7,0 C3.5,4 -3.5,4 -7,0 Z"
+          stroke="var(--accent-primary)"
+          strokeWidth="1.2"
+          fill="none"
+        />
+        <circle cx="0" cy="0" r="1.5" fill="var(--accent-primary)" />
+      </g>
+    );
+  }
+  
+  if (skillId === 'yolo') {
+    return (
+      <g>
+        <circle r="12" fill="#12141c" stroke="var(--border-default)" strokeWidth="1.2" />
+        <rect x="-7" y="-7" width="14" height="14" fill="none" stroke="var(--text-ghost)" strokeWidth="0.8" strokeDasharray="1.5 1.5" />
+        <rect x="-3" y="-3" width="6" height="6" fill="rgba(0,245,160,0.15)" stroke="var(--accent-primary)" strokeWidth="0.8" />
+      </g>
+    );
+  }
+
+  const logoUrl = LOGO_MAP[skillId];
+  const r = ring === 'core' ? 13 : ring === 'secondary' ? 11 : 9;
+  
+  return (
+    <g>
+      <circle r={r} className={styles.nodeCircleBackdrop} />
+      {logoUrl && (
+        <image
+          href={logoUrl}
+          x={-r + 2.5}
+          y={-r + 2.5}
+          width={(r - 2.5) * 2}
+          height={(r - 2.5) * 2}
+          className={styles.nodeImage}
+        />
+      )}
+    </g>
+  );
+}
+
 export interface SkillMapProps {
   hoveredSkillId: string | null;
   onHoverSkill: (id: string | null) => void;
@@ -168,16 +236,13 @@ export function SkillMap({ hoveredSkillId, onHoverSkill, activeRing }: SkillMapP
             >
               {/* Pulsing ring around hovered node */}
               {isHovered && (
-                <circle r="12" className={styles.hoverPulse} />
+                <circle r={skill.ring === 'core' ? 18 : skill.ring === 'secondary' ? 16 : 14} className={styles.hoverPulse} />
               )}
               
-              {/* Skill circle node */}
-              <circle
-                r={skill.ring === 'core' ? 6 : skill.ring === 'secondary' ? 5 : 4}
-                className={styles.nodeCircle}
-              />
+              {/* Skill content: backdrop circle + image logo */}
+              {renderNodeContent(skill.id, skill.ring)}
               
-              {/* Text label */}
+              {/* Text label (reveals on hover/highlight) */}
               <text
                 dx={dx}
                 dy={dy}

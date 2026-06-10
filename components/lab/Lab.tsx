@@ -19,79 +19,90 @@ interface Experiment {
 
 const EXPERIMENTS: Experiment[] = [
   {
-    id: 'inference-sandbox',
-    title: 'ONNX Dynamic Quantization Sandbox',
-    category: 'Inference Optimization',
+    id: 'deceptiscan-inference',
+    title: 'DeBERTa-v3 Fake Review Inference',
+    category: 'AI / NLP',
     description:
-      'A bench-testing utility designed to apply post-training dynamic quantization to float32 model structures. Quantizes weight matrices to int8 to reduce memory footprint and boost edge execution speeds.',
-    stats: 'Inference Speedup: 2.4x | Size reduction: 74%',
+      'Inference runner for DeceptiScan. Loads a fine-tuned DeBERTa-v3 sequence classification model using Hugging Face Transformers to evaluate and output the probability of a product review being deceptive.',
+    stats: 'Model Accuracy: 96.8% | Average Inference Latency: ~12ms',
     icon: 'cpu',
-    code: `import onnx
-from onnxruntime.quantization import quantize_dynamic, QuantType
+    code: `import torch
+from transformers import AutoTokenizer, AutoModelForSequenceClassification
 
-def optimize_onnx_model(model_path: str, output_path: str):
-    # Quantize linear layers from float32 to int8
-    quantize_dynamic(
-        model_input=model_path,
-        model_output=output_path,
-        weight_type=QuantType.QUInt8
-    )
-    print("Optimization complete: Int8 quantization applied successfully.")
+def analyze_review(review_text: str):
+    # Load fine-tuned DeBERTa model and tokenizer
+    tokenizer = AutoTokenizer.from_pretrained("microsoft/deberta-v3-small")
+    model = AutoModelForSequenceClassification.from_pretrained("./deceptiscan-model")
+    
+    inputs = tokenizer(review_text, return_tensors="pt", truncation=True, max_length=512)
+    with torch.no_grad():
+        outputs = model(**inputs)
+        probs = torch.softmax(outputs.logits, dim=1)
+    
+    # Returns probability of review being deceptive (Class 1)
+    return probs[0][1].item()
 
-optimize_onnx_model("model.onnx", "model_quant.onnx")`,
+prob = analyze_review("Excellent product! Very highly recommended.")
+print(f"Deceptive Probability: {prob:.4f}")`,
     language: 'python',
   },
   {
-    id: 'fps-counter',
-    title: 'Frame Pipeline Batch Profiler',
+    id: 'smartparkx-plate',
+    title: 'OpenCV License Plate Segmenter',
     category: 'Computer Vision',
     description:
-      'Performance evaluation script simulating multi-stream video input streams. Batches frames asynchronously to maximize TPU memory utilization during live YOLOv8 model evaluations.',
-    stats: 'Throughput: 148 FPS | Streams: 8 parallel',
+      'License plate extraction pipeline for SmartParkX ANPR workflows. Converts incoming parking gate video frames to grayscale, applies bilateral filtering, runs Canny edge detection, and isolates plate contours for OCR.',
+    stats: 'ESP32 Check-in: sub-100ms | Slot Detection Accuracy: 95%',
     icon: 'zap',
     code: `import cv2
-import queue
-import threading
+import pytesseract
 
-class StreamProfiler:
-    def __init__(self, buffer_size=32):
-        self.frame_queue = queue.Queue(maxsize=buffer_size)
-        self.is_running = True
-
-    def enqueue_stream(self, rtsp_url):
-        cap = cv2.VideoCapture(rtsp_url)
-        while self.is_running:
-            ret, frame = cap.read()
-            if not ret: break
-            if not self.frame_queue.full():
-                self.frame_queue.put(frame)
-        cap.release()`,
+def extract_license_plate(image_path: str):
+    # Load frame and preprocess
+    img = cv2.imread(image_path)
+    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    
+    # Smooth image to preserve edges while filtering noise
+    filtered = cv2.bilateralFilter(gray, 11, 17, 17)
+    edged = cv2.Canny(filtered, 30, 200)
+    
+    # Locate candidate contours
+    contours, _ = cv2.findContours(edged.copy(), cv2.RETR_LIST, cv2.CHAIN_APPROX_SIMPLE)
+    # Filter for rectangular plate contours and extract text
+    # ...
+    return pytesseract.image_to_string(filtered)`,
     language: 'python',
   },
   {
-    id: 'redis-broker',
-    title: 'Redis Event Broker Queue',
-    category: 'Backend Architecture',
+    id: 'riskshield-interpretability',
+    title: 'SHAP Explainable Fraud Classifier',
+    category: 'Machine Learning',
     description:
-      'Highly concurrent Node.js handler managing real-time slot state changes. Brokered messages through Redis Pub/Sub channels to update client dash connection nodes under 15ms.',
-    stats: 'Broker latency: 8.5ms | Msg/sec: 12,000+',
+      'Transaction risk scoring engine with explainable AI details. Loads a pre-trained fraud classifier and runs SHAP TreeExplainer to calculate SHapley values, exposing exactly which features drove the risk prediction.',
+    stats: 'Dataset size: 284,807 | High / Med / Low Risk categories',
     icon: 'terminal',
-    code: `import { createClient } from 'redis';
+    code: `import shap
+import pickle
+import pandas as pd
 
-async function launchEventBroker() {
-  const publisher = createClient();
-  const subscriber = publisher.duplicate();
-  
-  await Promise.all([publisher.connect(), subscriber.connect()]);
-  
-  await subscriber.subscribe('slot-updates', (message) => {
-    const data = JSON.parse(message);
-    console.log(\`[Broker Hub] Slot \${data.id} is now \${data.status}\`);
-  });
-}
+def explain_transaction(features_dict: dict):
+    # Load trained Random Forest model
+    with open("riskshield_model.pkl", "rb") as f:
+        model = pickle.load(f)
+        
+    df = pd.DataFrame([features_dict])
+    probability = model.predict_proba(df)[0][1]
+    
+    # Evaluate feature impact contributions via SHAP TreeExplainer
+    explainer = shap.TreeExplainer(model)
+    shap_values = explainer.shap_values(df)
+    
+    return probability, shap_values
 
-launchEventBroker().catch(console.error);`,
-    language: 'typescript',
+tx = {"V1": -1.35, "V2": 1.20, "Amount": 149.99}
+prob, explanations = explain_transaction(tx)
+print(f"Risk Probability: {prob:.2%}")`,
+    language: 'python',
   },
 ];
 

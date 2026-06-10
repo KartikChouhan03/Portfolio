@@ -1,6 +1,5 @@
 // ─────────────────────────────────────────────────────────────────────────────
 // Skills Data
-// UPDATE: Adjust skills to match your actual expertise.
 //
 // RING LIMITS (from UX spec / SVG map architecture):
 //   core:        4–5 skills   (inner ring, r=80)
@@ -16,29 +15,31 @@ import type { Skill, SkillDomain } from '@/types';
 
 export const skills: Skill[] = [
   // ── Core ring (4–5 skills) ─────────────────────────────────────────────────
-  { id: 'python',        name: 'Python',        ring: 'core',        domain: 'ml' },
-  { id: 'pytorch',       name: 'PyTorch',       ring: 'core',        domain: 'ml' },
-  { id: 'system-design', name: 'System Design', ring: 'core',        domain: 'engineering' },
-  { id: 'computer-vision', name: 'Computer Vision', ring: 'core',    domain: 'ml' },
-  { id: 'nodejs',        name: 'Node.js',        ring: 'core',       domain: 'backend' },
+  { id: 'python',          name: 'Python',          ring: 'core',        domain: 'ml' },
+  { id: 'pytorch',         name: 'PyTorch',         ring: 'core',        domain: 'ml' },
+  { id: 'nodejs',          name: 'Node.js',         ring: 'core',        domain: 'backend' },
+  { id: 'computer-vision', name: 'Computer Vision', ring: 'core',        domain: 'ml' },
+  { id: 'cpp',             name: 'C++',             ring: 'core',        domain: 'engineering' },
 
   // ── Secondary ring (8–10 skills) ───────────────────────────────────────────
-  { id: 'react',         name: 'React',          ring: 'secondary',  domain: 'frontend' },
-  { id: 'typescript',    name: 'TypeScript',     ring: 'secondary',  domain: 'frontend' },
-  { id: 'fastapi',       name: 'FastAPI',        ring: 'secondary',  domain: 'backend' },
-  { id: 'postgresql',    name: 'PostgreSQL',     ring: 'secondary',  domain: 'backend' },
-  { id: 'docker',        name: 'Docker',         ring: 'secondary',  domain: 'devops' },
-  { id: 'mongodb',       name: 'MongoDB',        ring: 'secondary',  domain: 'backend' },
-  { id: 'mlflow',        name: 'MLflow',         ring: 'secondary',  domain: 'ml' },
-  { id: 'redis',         name: 'Redis',          ring: 'secondary',  domain: 'backend' },
+  { id: 'react',           name: 'React.js',        ring: 'secondary',   domain: 'frontend' },
+  { id: 'typescript',      name: 'TypeScript',      ring: 'secondary',   domain: 'frontend' },
+  { id: 'fastapi',         name: 'FastAPI',         ring: 'secondary',   domain: 'backend' },
+  { id: 'django',          name: 'Django',          ring: 'secondary',   domain: 'backend' },
+  { id: 'mongodb',         name: 'MongoDB',         ring: 'secondary',   domain: 'backend' },
+  { id: 'postgresql',      name: 'PostgreSQL',      ring: 'secondary',   domain: 'backend' },
+  { id: 'scikit-learn',    name: 'Scikit-Learn',    ring: 'secondary',   domain: 'ml' },
+  { id: 'opencv',          name: 'OpenCV',          ring: 'secondary',   domain: 'ml' },
+  { id: 'git',             name: 'Git',             ring: 'secondary',   domain: 'devops' },
 
   // ── Familiarity ring (6–8 skills) ──────────────────────────────────────────
-  { id: 'kubernetes',    name: 'Kubernetes',     ring: 'familiarity', domain: 'devops',    learning: true },
-  { id: 'rust',          name: 'Rust',           ring: 'familiarity', domain: 'engineering', learning: true },
-  { id: 'kafka',         name: 'Kafka',          ring: 'familiarity', domain: 'backend',   learning: false },
-  { id: 'nextjs',        name: 'Next.js',        ring: 'familiarity', domain: 'frontend',  learning: false },
-  { id: 'transformers',  name: 'Transformers',   ring: 'familiarity', domain: 'ml',        learning: true },
-  { id: 'terraform',     name: 'Terraform',      ring: 'familiarity', domain: 'devops',    learning: true },
+  { id: 'tailwind',        name: 'Tailwind CSS',    ring: 'familiarity', domain: 'frontend',   learning: false },
+  { id: 'transformers',    name: 'Transformers',    ring: 'familiarity', domain: 'ml',         learning: true },
+  { id: 'yolo',            name: 'YOLOv8',          ring: 'familiarity', domain: 'ml',         learning: true },
+  { id: 'express',         name: 'Express.js',      ring: 'familiarity', domain: 'backend',    learning: false },
+  { id: 'sqlite',          name: 'SQLite',          ring: 'familiarity', domain: 'backend',    learning: false },
+  { id: 'linux',           name: 'Linux',           ring: 'familiarity', domain: 'devops',     learning: false },
+  { id: 'figma',           name: 'Figma',           ring: 'familiarity', domain: 'frontend',   learning: false },
 ];
 
 // ── Domains ───────────────────────────────────────────────────────────────────
@@ -48,27 +49,27 @@ export const skillDomains: SkillDomain[] = [
   {
     id: 'ml',
     label: 'AI & Machine Learning',
-    skillIds: ['python', 'pytorch', 'computer-vision', 'mlflow', 'transformers'],
+    skillIds: ['python', 'pytorch', 'computer-vision', 'scikit-learn', 'opencv', 'transformers', 'yolo'],
   },
   {
     id: 'backend',
     label: 'Backend & Data',
-    skillIds: ['nodejs', 'fastapi', 'postgresql', 'mongodb', 'redis', 'kafka'],
+    skillIds: ['nodejs', 'fastapi', 'django', 'mongodb', 'postgresql', 'express', 'sqlite'],
   },
   {
     id: 'frontend',
     label: 'Frontend',
-    skillIds: ['react', 'typescript', 'nextjs'],
+    skillIds: ['react', 'typescript', 'tailwind', 'figma'],
   },
   {
     id: 'devops',
-    label: 'DevOps & Infrastructure',
-    skillIds: ['docker', 'kubernetes', 'terraform'],
+    label: 'DevOps & Tools',
+    skillIds: ['git', 'linux'],
   },
   {
     id: 'engineering',
     label: 'Engineering',
-    skillIds: ['system-design', 'rust'],
+    skillIds: ['cpp'],
   },
 ];
 

@@ -1,36 +1,114 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🧠 Neural Portfolio — Kartik Chouhan
 
-## Getting Started
+A premium, highly interactive developer portfolio built with **Next.js 16 (App Router, Turbopack, React 19)**, custom glassmorphic CSS, and fluid **Framer Motion** animations. 
 
-First, run the development server:
+Designed with a cybernetic, dark-mode terminal aesthetic tailored for an **AI, Machine Learning, and Full-Stack Software Engineer**.
+
+---
+
+## 🚀 Key Features & Interactive Experiences
+
+### 1. Boot-up Intro Sequence & Morphing Dock
+* **multilingual greeting capsule:** Elegant capsule-shaped center loader cycling through greeting states (`Namaste`, `Hello`, `Bonjour`, `Hola`, `Ciao`, `Kon'nichiwa`, `Guten Tag`, `Olá`) with a glowing emerald progress fill.
+* **Layout Morph:** Once loaded, the greetings capsule seamlessly morphs (using layout projection `layoutId`) into the bottom macOS-inspired floating navigation dock.
+* **No FOUC (Flash of Unstyled Content):** Hardcoded initial HTML CSS loading flags keep page content hidden until the loader finishes. Includes a `<noscript>` stylesheet fallback to keep the site readable if JS is disabled.
+
+### 2. concentric Radial SVG Skill Map
+* **Concentric rings:** Visually groups expertise into **Core Stack** ($r=80$), **Supporting Tech** ($r=155$), and **Familiarity** ($r=230$).
+* **Tech Logo Nodes:** Circular node backdrops rendering official tech logos (loaded via CDN with custom inline SVG fallbacks for Computer Vision and YOLOv8 models).
+* **Hover Highlights:** Hovering a logo node displays its text name dynamically (sliding up and fading in next to the icon) while highlighting the corresponding category chip on the right.
+
+### 3. Animated Procedural Project grid
+* ** سنابي (Snappy) Category Filtering:** Supports instant category-filtering of projects with smooth grid layout reflows (`layout="position"`).
+* **Micro-Simulated SVG Thumbnails:** Projects without static thumbnails render active CSS-animated vector dashboards:
+  * **DeceptiScan:** Green scanner sweeps with live DeBERTa-v3 inference metrics.
+  * **SmartParkX:** Camera viewfinder target frames with a red laser scanner and slot occupancy boxes.
+  * **BorrowBox:** P2P circular pool lines with floating nodes and transaction logs.
+  * **RiskShield:** Concentric orange shield ripple rings with SHAP tree audit text.
+  * **Foodify:** Node dispatch maps with location pins and animated route lines.
+* **Shared Element Modal:** Clicking a card opens a modal overlay where the card's thumbnail, title, and structure expand smoothly into the detailed view.
+
+### 4. Interactive Engineering Lab
+* A digital terminal shell showcasing Kartik's actual technical scripts (PyTorch model loading, OpenCV filtering, SHAP explanations).
+* Interactive tab selectors display codeblocks formatted in `JetBrains Mono` and render benchmark indicators.
+
+---
+
+## 🛠️ Technology Stack
+
+* **Framework:** Next.js 16.2.6 (App Router, React 19)
+* **Compiler:** Turbopack (fast, local incremental compilation)
+* **Animations:** `motion/react` (Framer Motion v12), Lenis Smooth Scroll
+* **Styling:** PostCSS, Tailwind CSS v4, CSS Custom Variables
+* **Icons:** Lucide React, jsdelivr Devicon CDN
+* **Type-Safety:** TypeScript 5
+
+---
+
+## 📂 Repository Structure
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+neural-portfolio/
+├── app/                      # Next.js pages & layouts
+│   ├── globals.css           # Global custom typography, tokens, and loader classes
+│   ├── layout.tsx            # Main HTML layout wrapper & noscript fallback
+│   └── page.tsx              # Minimal home entry point
+├── components/               # UI components
+│   ├── about/                # Biography and metrics card
+│   ├── contact/              # Call to action & links
+│   ├── hero/                 # Typography overlay & WebGL visual core
+│   ├── intro/                # Boot sequence loader
+│   ├── journey/              # Career timeline cards
+│   ├── lab/                  # Terminal code runner
+│   ├── Layout/               # Navbar, footer, and navigation dock
+│   ├── projects/             # Projects grid, category chips, and detail modals
+│   ├── providers/            # Intro state, Lenis smooth scroll, and animation pause wrappers
+│   ├── skills/               # SVG concentric radar map and domain list
+│   └── ui/                   # Reusable components (Badge, Button, FocusTrap, SkipLink)
+├── data/                     # Single source of truth data files
+│   ├── journey.ts            # Career records
+│   ├── meta.ts               # Name, contact info, bio, and metrics
+│   ├── projects.ts           # Project titles, tech stacks, and metrics
+│   └── skill.ts              # Skill rings and domain clusters
+├── hooks/                    # Custom React hooks (scroll active, media matching, modals)
+├── lib/                      # Helper scripts & variant configurations
+└── types/                    # Strict TypeScript interface declarations
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 💻 Local Setup & Development
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 1. Installation
+Clone the repository and install the project dependencies:
+```bash
+npm install
+```
 
-## Learn More
+### 2. Start Development Server
+Start the Next.js local development server with Turbopack enabled:
+```bash
+npm run dev
+```
+Open [http://localhost:3000](http://localhost:3000) to view the application.
 
-To learn more about Next.js, take a look at the following resources:
+### 3. Production Build
+Compile and package the application for production deployment:
+```bash
+npm run build
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 4. TypeScript Checks
+Run TypeScript compiler checks to ensure type safety:
+```bash
+npm run type-check
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## ♿ Accessibility & Performance
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+* **Keyboard Trap:** Custom `FocusTrap` ensures accessibility inside the project modal overlay.
+* **Skip Link:** A high-contrast keyboard skip link (`#main-content`) is available for screen-reader users.
+* **Reduced Motion:** Full integration with the browser's `prefers-reduced-motion: reduce` preference (bypasses the intro sequence instantly and disables all layout scale animations).
+* **Standardized Dates:** Unified date structures (`YYYY-MM-DD`) across data layers prevent layout sorting mismatches in Safari and mobile browser parsing engines.

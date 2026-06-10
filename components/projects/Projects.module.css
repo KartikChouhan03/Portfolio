@@ -43,6 +43,7 @@
 /* ── Grid Layout ────────────────────────────────────────────────────────── */
 
 .grid {
+  position: relative;
   display: grid;
   grid-template-columns: 1fr;
   gap: 2rem;
@@ -296,3 +297,247 @@
 .cardLink:hover {
   color: var(--primary);
 }
+
+/* ── Animated Procedural Thumbnails ──────────────────────────────────────── */
+
+.proceduralThumbnail[data-project="deceptiscan"] {
+  background: radial-gradient(circle at 50% 50%, rgba(0, 245, 160, 0.15) 0%, transparent 70%);
+}
+
+.proceduralThumbnail[data-project="smartparkx"] {
+  background: radial-gradient(circle at 50% 50%, rgba(239, 68, 68, 0.08) 0%, transparent 70%);
+}
+
+.proceduralThumbnail[data-project="borrowbox"] {
+  background: radial-gradient(circle at 50% 50%, rgba(96, 165, 250, 0.1) 0%, transparent 70%);
+}
+
+.proceduralThumbnail[data-project="riskshield"] {
+  background: radial-gradient(circle at 50% 50%, rgba(245, 158, 11, 0.08) 0%, transparent 70%);
+}
+
+.proceduralThumbnail[data-project="foodify"] {
+  background: radial-gradient(circle at 50% 50%, rgba(168, 85, 247, 0.08) 0%, transparent 70%);
+}
+
+/* Scanner Line (DeceptiScan) */
+.scannerLine {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--primary), transparent);
+  box-shadow: 0 0 8px var(--primary);
+  opacity: 0.6;
+  animation: scanVertical 4s linear infinite;
+}
+
+@keyframes scanVertical {
+  0% { top: 0%; }
+  50% { top: 100%; }
+  100% { top: 0%; }
+}
+
+/* System Terminal Overlay */
+.systemTerminal {
+  position: absolute;
+  bottom: 0.75rem;
+  left: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.terminalText {
+  font-family: var(--font-mono);
+  font-size: 8px;
+  color: var(--primary);
+  opacity: 0.7;
+  letter-spacing: 0.05em;
+  text-shadow: 0 0 4px rgba(0, 245, 160, 0.4);
+}
+
+.proceduralThumbnail[data-project="smartparkx"] .terminalText {
+  color: #ef4444;
+  text-shadow: 0 0 4px rgba(239, 68, 68, 0.4);
+}
+
+.proceduralThumbnail[data-project="borrowbox"] .terminalText {
+  color: #60a5fa;
+  text-shadow: 0 0 4px rgba(96, 165, 250, 0.4);
+}
+
+.proceduralThumbnail[data-project="riskshield"] .terminalText {
+  color: #f59e0b;
+  text-shadow: 0 0 4px rgba(245, 158, 11, 0.4);
+}
+
+.proceduralThumbnail[data-project="foodify"] .terminalText {
+  color: #a855f7;
+  text-shadow: 0 0 4px rgba(168, 85, 247, 0.4);
+}
+
+/* Camera Crosshairs & Laser (SmartParkX) */
+.cameraCrosshairs {
+  position: absolute;
+  inset: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  pointer-events: none;
+}
+
+.cameraCrosshairs::before,
+.cameraCrosshairs::after {
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-color: rgba(255, 255, 255, 0.25);
+  border-style: solid;
+}
+
+.cameraCrosshairs::before {
+  top: 0; left: 0;
+  border-width: 1.5px 0 0 1.5px;
+}
+
+.cameraCrosshairs::after {
+  bottom: 0; right: 0;
+  border-width: 0 1.5px 1.5px 0;
+}
+
+.scanningLaser {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: rgba(239, 68, 68, 0.8);
+  box-shadow: 0 0 6px rgba(239, 68, 68, 0.8);
+  animation: laserSweep 3s ease-in-out infinite;
+}
+
+@keyframes laserSweep {
+  0% { top: 15%; }
+  50% { top: 85%; }
+  100% { top: 15%; }
+}
+
+/* CV Bounding Box */
+.cvBoundingBox {
+  position: absolute;
+  border: 1px solid var(--primary);
+  background: rgba(0, 245, 160, 0.05);
+  box-shadow: 0 0 6px rgba(0, 245, 160, 0.1);
+  pointer-events: none;
+}
+
+.proceduralThumbnail[data-project="smartparkx"] .cvBoundingBox {
+  border-color: rgba(239, 68, 68, 0.6);
+  background: rgba(239, 68, 68, 0.05);
+}
+
+.boxLabel {
+  position: absolute;
+  top: -12px;
+  left: -1px;
+  background: var(--primary);
+  color: black;
+  font-family: var(--font-mono);
+  font-size: 7px;
+  font-weight: 600;
+  padding: 1px 3px;
+  white-space: nowrap;
+}
+
+.proceduralThumbnail[data-project="smartparkx"] .boxLabel {
+  background: #ef4444;
+  color: white;
+}
+
+/* Flow SVG (BorrowBox, Foodify) */
+.flowSvg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* Shield (RiskShield) */
+.shieldWrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50px;
+  height: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.shieldIcon {
+  width: 20px;
+  height: 24px;
+  background: var(--primary);
+  clip-path: polygon(50% 0%, 100% 20%, 100% 70%, 50% 100%, 0% 70%, 0% 20%);
+  filter: drop-shadow(0 0 6px var(--primary));
+  opacity: 0.6;
+}
+
+.proceduralThumbnail[data-project="riskshield"] .shieldIcon {
+  background: #f59e0b;
+  filter: drop-shadow(0 0 6px #f59e0b);
+}
+
+.shieldPulse {
+  position: absolute;
+  width: 45px;
+  height: 45px;
+  border: 1px solid var(--primary);
+  border-radius: 50%;
+  opacity: 0;
+  animation: shieldRipple 2.5s ease-out infinite;
+}
+
+.proceduralThumbnail[data-project="riskshield"] .shieldPulse {
+  border-color: #f59e0b;
+}
+
+@keyframes shieldRipple {
+  0% { transform: scale(0.6); opacity: 0.8; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+
+/* Route Animations (Foodify) */
+.pulsingPin {
+  animation: pulsePin 2s infinite;
+}
+
+@keyframes pulsePin {
+  0%, 100% { r: 5px; opacity: 0.8; }
+  50% { r: 8px; opacity: 1; filter: drop-shadow(0 0 6px var(--primary)); }
+}
+
+.proceduralThumbnail[data-project="foodify"] .pulsingPin {
+  fill: #a855f7;
+  filter: drop-shadow(0 0 6px #a855f7);
+}
+
+.routeActive {
+  animation: dash 15s linear infinite;
+}
+
+.proceduralThumbnail[data-project="foodify"] .routeActive {
+  stroke: #a855f7;
+}
+
+@keyframes dash {
+  to {
+    stroke-dashoffset: -100;
+  }
+}
+

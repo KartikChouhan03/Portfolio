@@ -1,6 +1,5 @@
 // ─────────────────────────────────────────────────────────────────────────────
 // Site Meta — Single source of truth for all identity strings.
-// UPDATE: Replace all placeholder values with real information before launch.
 // ─────────────────────────────────────────────────────────────────────────────
 
 export const meta = {
@@ -10,68 +9,58 @@ export const meta = {
   lastName: 'Chouhan',
 
   // ── Role ──────────────────────────────────────────────────────────────────
-  // Shown in navbar logotype and document title.
-  role: 'Full-Stack Developer & AI/ML Engineer',
+  role: 'Software Engineer | Full-Stack Developer | AI/ML & Computer Vision',
 
   // ── Tagline ───────────────────────────────────────────────────────────────
-  // Used in hero description paragraph and meta description.
   tagline:
-    'Building intelligent systems with computer vision, backend engineering, and automation.',
+    'Building intelligent software systems that combine modern web technologies, backend engineering, machine learning, and computer vision to solve real-world problems.',
 
   // ── Bio variants ──────────────────────────────────────────────────────────
-  // bioShort: Used in About section card and OG description. 1–2 sentences.
   bioShort:
-    'AI/ML engineer building production systems that bridge computer vision, backend infrastructure, and intelligent automation.',
+    'Information Technology student at Manipal University Jaipur focusing on software engineering, full-stack development, AI/ML, and computer vision.',
 
-  // bioLong: Used in About section main text. 4–5 sentences of genuine voice.
-  // UPDATE: Write this in your own voice. Avoid resume-speak.
   bioLong:
-    'I build systems that think. With a focus on computer vision and backend engineering, I architect ML pipelines that go from research to production — not just models that work in notebooks, but systems that work at scale. I care about the intersection of rigorous software engineering and intelligent systems design. When I am not shipping features, I am tinkering with the underlying mechanics: training loops, inference optimization, and the unglamorous work of making ML reliable.',
+    'I am a final-year Information Technology student at Manipal University Jaipur with a strong interest in software engineering, full-stack development, artificial intelligence, and computer vision. I enjoy building end-to-end systems that combine modern web technologies, backend infrastructure, machine learning models, and real-world automation. My projects range from AI-powered review analysis and computer vision applications to full-stack platforms designed to solve practical problems. Currently, I focus on developing scalable software solutions while continuously exploring machine learning, intelligent systems, and backend architecture.',
 
   // ── Statement ─────────────────────────────────────────────────────────────
-  // Large display text in About section left zone. One powerful sentence.
-  // UPDATE: Make this your own. It should sound like you, not a job posting.
-  statement: 'I build systems that think.',
+  statement: 'Building Intelligent Software Systems.',
 
   // ── Metrics ───────────────────────────────────────────────────────────────
-  // Shown as animated counters in the About section.
-  // UPDATE: Replace with real, verifiable numbers.
   metrics: [
-    { value: 3, suffix: '+', label: 'Years ML experience' },
-    { value: 12, suffix: '+', label: 'Production systems' },
-    { value: 8, suffix: '+', label: 'Open source contributions' },
-    { value: 95, suffix: '%', label: 'Model accuracy (SmartParkX)' },
+    { value: 5, suffix: '+', label: 'Major Projects' },
+    { value: 400, suffix: '+', label: 'Students Impacted' },
+    { value: 4, suffix: '+', label: 'Professional Certifications' },
+    { value: 96.8, suffix: '%', label: 'DeceptiScan Model Accuracy' },
   ],
 
   // ── Contact & Social ──────────────────────────────────────────────────────
-  // UPDATE: Replace all with real URLs and email.
-  email: 'kartik@example.com', // UPDATE
-  github: 'https://github.com/kartik-chouhan', // UPDATE
-  linkedin: 'https://linkedin.com/in/kartik-chouhan', // UPDATE
-  twitter: null as string | null, // UPDATE or keep null
+  email: 'chouhankartik3300@gmail.com',
+  github: 'https://github.com/KartikChouhan03',
+  linkedin: 'https://www.linkedin.com/in/kartik-chouhan-255369270/',
+  twitter: null as string | null,
 
   // ── Location ──────────────────────────────────────────────────────────────
-  location: 'India',
+  location: 'Bhopal, India',
 
   // ── SEO ───────────────────────────────────────────────────────────────────
-  siteUrl: 'https://kartik.dev', // UPDATE with real domain
-  ogImage: '/og/cover.png', // CREATE this image before launch
+  siteUrl: 'https://kartikchouhan.dev', // Default placeholder domain for Kartik
+  ogImage: '/og/cover.png',
 } as const;
 
 export const aboutCards = [
   {
     title: 'FOCUS',
-    body: 'AI/ML engineering, computer vision pipelines, and optimizing neural inference for production environments.',
+    body: 'Full-stack development, AI/ML applications, computer vision systems, and intelligent automation.',
     icon: 'brain',
   },
   {
     title: 'APPROACH',
-    body: 'Architecting robust backend pipelines and modular systems that bridge hardware constraints and high scalability.',
+    body: 'Building practical software solutions by combining clean architecture, scalable backend systems, and data-driven intelligence.',
     icon: 'cpu',
   },
   {
     title: 'BEYOND CODE',
-    body: 'Committed to open source collaboration, technical storytelling, and exploring the ethical dimensions of intelligence.',
+    body: 'Active technical community contributor, event organizer, and continuous learner exploring emerging technologies and real-world problem solving.',
     icon: 'globe',
   },
 ] as const;

@@ -3,22 +3,21 @@
 .header {
     position: sticky;
     top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
     z-index: var(--z-navbar);
     height: var(--navbar-height);
     /* 64px */
 
-    /* Glass effect */
-    background: var(--glass-bg);
-    backdrop-filter: var(--glass-blur) var(--glass-saturate);
-    -webkit-backdrop-filter: var(--glass-blur) var(--glass-saturate);
+    /* Very subtle glass — almost invisible */
+    background: rgba(10, 11, 16, 0.5);
+    backdrop-filter: blur(12px) saturate(140%);
+    -webkit-backdrop-filter: blur(12px) saturate(140%);
 
-    border-bottom: 1px solid var(--border-subtle);
+    /* Hairline border — barely visible */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
 
-    /*
-    isolation: isolate creates a new stacking context.
-    Prevents child elements (progress bar, dropdowns) from bleeding
-    outside the header's z-index boundary.
-  */
     isolation: isolate;
 }
 
@@ -29,8 +28,20 @@
     align-items: center;
     justify-content: space-between;
     height: 100%;
-    gap: 1.5rem;
+    padding-inline: 1.25rem;
+    width: 100%;
+    box-sizing: border-box;
 }
+
+@media (max-width: 768px) {
+    .inner {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin-inline: 0 !important;
+        padding-inline: 1.25rem !important;
+    }
+}
+
 
 /* ── Logo ────────────────────────────────────────────────────────────────── */
 
@@ -49,67 +60,6 @@
 
 .logo:hover {
     color: var(--accent-primary);
-}
-
-/* ── Nav links list ──────────────────────────────────────────────────────── */
-
-.navLinks {
-    display: flex;
-    align-items: center;
-    gap: clamp(1.25rem, 2.5vw, 2.25rem);
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    /* Allow links to wrap to a new line on smaller desktop viewports */
-    flex-wrap: nowrap;
-}
-
-/* ── Nav link item ───────────────────────────────────────────────────────── */
-
-.navLink {
-    position: relative;
-    display: inline-block;
-    font-family: var(--font-body);
-    font-size: var(--text-xs);
-    font-weight: 500;
-    color: var(--text-muted);
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    white-space: nowrap;
-    padding-block: 0.375rem;
-
-    transition: color var(--duration-fast) var(--ease-expo-out);
-}
-
-/* Animated underline — drawn left to right */
-.navLink::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 1px;
-    background: var(--accent-primary);
-    transform: scaleX(0);
-    transform-origin: 0 50%;
-    transition: transform var(--duration-fast) var(--ease-expo-out);
-}
-
-.navLink:hover {
-    color: var(--text-secondary);
-}
-
-.navLink:hover::after {
-    transform: scaleX(1);
-}
-
-/* Active state */
-.navLinkActive {
-    color: var(--accent-primary) !important;
-}
-
-.navLinkActive::after {
-    transform: scaleX(1);
 }
 
 /* ── Nav actions (right side) ────────────────────────────────────────────── */
@@ -145,7 +95,6 @@
     border-color: var(--border-subtle);
 }
 
-/* Active (animations paused) state */
 .iconButtonActive {
     color: var(--accent-primary);
     background-color: var(--accent-primary-dim);
@@ -192,37 +141,20 @@
     bottom: 0;
     left: 0;
     right: 0;
-    height: 2px;
+    height: 1px;
     background: var(--accent-primary);
-
-    /* Scale from left edge */
     transform-origin: 0 50%;
-
-    /* Subtle glow to make the bar pop against the glass background */
-    box-shadow: 0 0 10px var(--accent-primary-glow);
-
-    /* Prevent the bar from interfering with the header border-bottom */
+    box-shadow: 0 0 8px var(--accent-primary-glow);
     pointer-events: none;
+    opacity: 0.6;
 }
 
-/* ── Responsive: hide on mobile ──────────────────────────────────────────── */
+/* Nav links — kept in CSS for any legacy usage, hidden by default */
+.navLinks {
+    display: none;
+}
 
-/*
-  On mobile, the navbar is replaced by MobileNav (fixed bottom bar).
-  We hide the nav links and actions, but keep the header visible with
-  just the logo — this prevents a completely empty header on mobile.
-  MobileNav renders separately outside this component.
-*/
-@media (max-width: 768px) {
-    .navLinks {
-        display: none;
-    }
-
-    .navActions {
-        display: none;
-    }
-
-    /* Optionally hide entire header on mobile if MobileNav is sufficient */
-    /* Uncomment if the logo bar creates visual clutter on mobile:       */
-    /* .header { display: none; }                                         */
+.navLink,
+.navLinkActive {
+    display: none;
 }

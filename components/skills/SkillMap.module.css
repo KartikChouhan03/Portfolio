@@ -98,34 +98,62 @@
   font-weight: 500;
   fill: var(--text-muted);
   pointer-events: none;
+  opacity: 0;
+  transform: translateY(2px);
   transition: 
-    fill var(--duration-fast) var(--ease-expo-out),
-    font-weight var(--duration-fast) var(--ease-expo-out);
+    opacity var(--duration-fast) var(--ease-expo-out),
+    transform var(--duration-fast) var(--ease-expo-out),
+    fill var(--duration-fast) var(--ease-expo-out);
 }
 
 .nodeTextLearning {
   font-style: italic;
 }
 
+.nodeImage {
+  pointer-events: none;
+  border-radius: 50%;
+  transform-origin: 0 0;
+  transition: transform var(--duration-fast) var(--ease-expo-out);
+}
+
+.nodeCircleBackdrop {
+  fill: #12141c;
+  stroke: var(--border-default);
+  stroke-width: 1.2px;
+  transform-origin: 0 0;
+  transition: 
+    fill var(--duration-fast) var(--ease-expo-out),
+    stroke var(--duration-fast) var(--ease-expo-out),
+    transform var(--duration-fast) var(--ease-expo-out),
+    filter var(--duration-fast) var(--ease-expo-out);
+}
+
 /* Highlighted state */
-.nodeHighlighted .nodeCircle {
-  fill: var(--accent-primary);
-  filter: drop-shadow(0 0 4px var(--accent-primary));
+.nodeHighlighted .nodeCircleBackdrop {
+  stroke: var(--accent-primary);
+  fill: #161a29;
+  filter: drop-shadow(0 0 6px rgba(0, 245, 160, 0.25));
   transform: scale(1.15);
 }
 
-.nodeSecondary.nodeHighlighted .nodeCircle {
-  fill: var(--accent-secondary);
-  filter: drop-shadow(0 0 4px var(--accent-secondary));
+.nodeSecondary.nodeHighlighted .nodeCircleBackdrop {
+  stroke: var(--accent-secondary);
+  filter: drop-shadow(0 0 6px rgba(96, 165, 250, 0.25));
 }
 
-.nodeFamiliarity.nodeHighlighted .nodeCircle {
-  fill: var(--text-secondary);
-  filter: drop-shadow(0 0 4px var(--text-secondary));
-  stroke-dasharray: none;
+.nodeFamiliarity.nodeHighlighted .nodeCircleBackdrop {
+  stroke: var(--text-secondary);
+  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.15));
+}
+
+.nodeHighlighted .nodeImage {
+  transform: scale(1.15);
 }
 
 .nodeHighlighted .nodeText {
+  opacity: 1;
+  transform: translateY(0);
   fill: var(--text-primary);
   font-weight: 600;
 }

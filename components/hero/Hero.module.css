@@ -1,12 +1,14 @@
 .hero {
   position: relative;
-  min-height: 100vh;
+  /* More generous vertical padding — header is now minimal, dock is at bottom */
+  min-height: calc(100vh - 64px);
   display: flex;
   align-items: center;
   background: radial-gradient(circle at 75% 50%, rgba(0, 245, 160, 0.04) 0%, transparent 65%);
   border-bottom: 1px solid var(--border-subtle);
   overflow: hidden;
-  padding-block: 4rem;
+  /* Extra top padding so content sits in the visual centre of the freed space */
+  padding-block: 5rem 8rem;
 }
 
 /* Scroll-driven animation for the bottom border */
@@ -111,7 +113,8 @@
 @media (max-width: 768px) {
   .hero {
     background: radial-gradient(circle at 50% 30%, rgba(0, 245, 160, 0.05) 0%, transparent 60%);
-    padding-block: 6rem 4rem;
+    /* Extra bottom padding so dock doesn't overlap the CTA buttons */
+    padding-block: 4rem 7rem;
   }
 
   .wrapper {
@@ -130,5 +133,12 @@
 
   .title {
     line-height: 1.0;
+  }
+}
+
+/* Tiny screens — ensure dock doesn't cover last hero button */
+@media (max-width: 480px) {
+  .hero {
+    padding-bottom: 8rem;
   }
 }

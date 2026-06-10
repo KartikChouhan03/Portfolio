@@ -1,84 +1,84 @@
 import type { Project } from '@/types';
 
 export const projects: Project[] = [
-  // ── Featured project ──────────────────────────────────────────────────────
+  // ── Featured project 1: DeceptiScan ────────────────────────────────────────
+  {
+    id: 'deceptiscan',
+    title: 'DeceptiScan',
+    shortDescription: 'AI-powered fake review detector and ML platform with a 96.8% fine-tuned classifier.',
+    longDescription: `DeceptiScan is a real-time AI-powered browser extension and machine learning platform designed to detect fake, AI-generated, and manipulative product reviews on e-commerce websites. The platform integrates a Chrome extension frontend built with React and Plasmo with a high-performance FastAPI backend. The detection engine is powered by a fine-tuned DeBERTa-v3 sequence classification model trained on over 72,000 samples, generating credibility insights and trust scores for products dynamically. By optimizing the PyTorch inference pipeline to run in approximately 12ms per review, the platform flags suspicious feedback instantly and provides buyers with explainable AI insights.`,
+    tech: ['React', 'TypeScript', 'Plasmo', 'FastAPI', 'PyTorch', 'Hugging Face', 'DeBERTa-v3', 'Python'],
+    category: 'ai-ml',
+    impactMetric: '96.8% Fine-Tuned Model Accuracy',
+    thumbnail: null,
+    githubUrl: 'https://github.com/KartikChouhan03/DeceptiScan',
+    liveUrl: null,
+    featured: true,
+    completedAt: '2024-10-01',
+  },
+
+  // ── Featured project 2: SmartParkX ─────────────────────────────────────────
   {
     id: 'smartparkx',
     title: 'SmartParkX',
-    shortDescription: 'AI-powered parking system reducing urban congestion.',
-    longDescription: `SmartParkX is a real-time intelligent parking management platform built to reduce urban traffic congestion through predictive slot allocation. The system processes live CCTV feeds using a custom-trained YOLOv8 model to detect occupied and vacant slots with 95% accuracy across variable lighting conditions.
-
-The backend is a Node.js microservices architecture with MongoDB for slot state persistence and Redis for sub-100ms cache lookups. A React dashboard gives operators real-time occupancy maps and historical analytics. The ML inference pipeline runs on-device at parking facilities using ONNX Runtime, removing the latency and cost of cloud inference for time-critical detections.
-
-The system reduced average vehicle search time by 40% in the pilot deployment and demonstrated a 28% reduction in emissions from circling traffic in the monitored zone.`,
-    tech: ['Python', 'YOLOv8', 'Node.js', 'React', 'MongoDB', 'Redis', 'ONNX'],
+    shortDescription: 'Intelligent parking management system combining IoT sensors and computer vision.',
+    longDescription: `SmartParkX is an end-to-end automated parking management system designed to track vehicle check-ins, slots, and billings in real time. The system uses ESP32 microcontrollers integrated with ultrasonic and IR sensors to monitor parking slot occupancy and push status updates to the Express server. The platform incorporates a computer vision workflow using OpenCV and Tesseract OCR to perform Automatic Number Plate Recognition (ANPR) at entry and exit gates. Slot states, check-in logs, and billing metadata are persisted on MongoDB Atlas and displayed on a sleek React administrator dashboard, optimizing lot occupancy operations without manual logs.`,
+    tech: ['React', 'Node.js', 'Express', 'MongoDB', 'OpenCV', 'Tesseract OCR', 'ESP32', 'Tailwind CSS'],
     category: 'vision',
-    impactMetric: 'Reduced vehicle search time by 40%',
+    impactMetric: 'Real-time CV plate recognition',
     thumbnail: null,
-    githubUrl: 'https://github.com/kartik-chouhan/smartparkx',
+    githubUrl: 'https://github.com/KartikChouhan03/SmartParkX',
     liveUrl: null,
     featured: true,
-    completedAt: '2024-06',
+    completedAt: '2024-06-01',
   },
 
-  // ── Project 2 ──────────────────────────────────────────────────────────────
+  // ── Project 3: BorrowBox ───────────────────────────────────────────────────
   {
-    id: 'neural-pipe',
-    title: 'NeuralPipe: ML Training Pipeline',
-    shortDescription: 'Distributed training pipeline reducing training lifecycle times by 35%.',
-    longDescription: `NeuralPipe is a distributed ML Ops training and orchestration pipeline built for automated model evaluation, checkpoint tracking, and model registry uploads. The system monitors raw data directories, triggers preprocessing workers to clean and slice datasets, and launches parallel PyTorch training runs across multi-GPU setups.
-
-Using MLflow, the pipeline tracks training loss curves, evaluation accuracy, and model artifacts in real time. Model training weights are dynamically quantized to int8 format using TensorRT before registration, ensuring immediate deployment readiness. FastAPI endpoints expose model health states, batch sizes, and dataset version hashes to developers.
-
-The project successfully automated the manual model iteration process, reducing human setup error rate to 0% and improving training cycle speeds by 35% across four internal vision and text classification projects.`,
-    tech: ['Python', 'PyTorch', 'MLflow', 'TensorRT', 'FastAPI', 'Docker'],
-    category: 'ai-ml',
-    impactMetric: 'Accelerated training cycles by 35%',
-    thumbnail: null,
-    githubUrl: 'https://github.com/kartik-chouhan/neural-pipe',
-    liveUrl: null,
-    featured: false,
-    completedAt: '2024-03',
-  },
-
-  // ── Project 3 ──────────────────────────────────────────────────────────────
-  {
-    id: 'distributa',
-    title: 'Distributa: Task Queue',
-    shortDescription: 'Fault-tolerant worker queue processing 10k messages per second under 15ms.',
-    longDescription: `Distributa is a highly concurrent, distributed task queue designed for heavy asynchronous background workloads. It manages job serialization, retry backoffs, and execution state reporting across dynamic worker sets. Built with Node.js and TypeScript, the system leverages Redis stream datatypes to achieve high throughput and persistent log preservation.
-
-To maintain system stability during network partitions, Distributa implements a custom lock mechanism using Redlock, preventing duplicate worker execution. A React dashboard provides operations teams with live throughput metrics, queue depths, worker statuses, and dead-letter queue investigation portals.
-
-The system consistently sustains a throughput of 10,000 requests per second with message processing latency under 15ms, resolving bottleneck issues for real-time notification dispatches.`,
-    tech: ['Node.js', 'TypeScript', 'Redis', 'PostgreSQL', 'Docker', 'React'],
+    id: 'borrowbox',
+    title: 'BorrowBox',
+    shortDescription: 'Campus peer-to-peer equipment rental web platform for circular-economy sharing.',
+    longDescription: `BorrowBox is a student-focused circular-economy rental web application designed to help campus students securely lend and borrow academic and personal equipment. Built with a Django and Django REST Framework backend, the application exposes endpoints for user profiles, asset listings, borrow request lifecycles, notification dispatches, and review ratings. It manages user authentication via Django's secure frameworks, institutional account validation, and asset discovery catalogs using PostgreSQL. The circular economy workflow helps reduce student expenditure on temporary items by monetizing underutilized assets.`,
+    tech: ['Django', 'PostgreSQL', 'JavaScript', 'HTML5', 'CSS3', 'Django REST Framework', 'SQLite'],
     category: 'backend',
-    impactMetric: 'Processes 10k messages/sec under 15ms',
+    impactMetric: 'Circular economy rental system',
     thumbnail: null,
-    githubUrl: 'https://github.com/kartik-chouhan/distributa',
+    githubUrl: 'https://github.com/KartikChouhan03/BorrowBox',
     liveUrl: null,
     featured: false,
-    completedAt: '2023-11',
+    completedAt: '2024-02-01',
   },
 
-  // ── Project 4 ──────────────────────────────────────────────────────────────
+  // ── Project 4: RiskShield ──────────────────────────────────────────────────
   {
-    id: 'scrape-hub',
-    title: 'ScrapeHub: Scraper Pipeline',
-    shortDescription: 'Parallel web extraction cluster parsing 50k records daily with dynamic proxying.',
-    longDescription: `ScrapeHub is a highly parallelized data collection and parsing cluster built to aggregate unstructured web data for market intelligence models. The system routes network traffic dynamically through rotating proxies to bypass rate limits and employs Playwright to load dynamic javascript-rendered page contents.
-
-FastAPI endpoints schedule extraction tasks, which are distributed across Celery workers running on lightweight Docker containers. Extracted data runs through automated schemas to sanitize character inputs and validate types before writing to PostgreSQL, with invalid formats piped into a manual review queue.
-
-The pipeline processes over 50,000 target records daily, maintaining a success rate of 99.4% while reducing manual scraping workloads by approximately 80 hours per week.`,
-    tech: ['Python', 'Playwright', 'FastAPI', 'Celery', 'PostgreSQL', 'Docker'],
-    category: 'automation',
-    impactMetric: 'Parses 50k records daily with 99.4% success',
+    id: 'riskshield',
+    title: 'RiskShield',
+    shortDescription: 'Explainable AI transaction fraud detector with SHAP-based model interpretability.',
+    longDescription: `RiskShield is an intelligent financial transaction auditing and fraud detection system trained on over 284,000 credit card entries. Developed with Scikit-Learn, the model calculates probability scores for incoming transactions and sorts them into low, medium, and high risk categories. The system utilizes SHAP (SHapley Additive exPlanations) to explain feature importances, breaking down exactly which factors (e.g., amount, location, history) drove the risk score. A clean Streamlit application serves as the operator panel, presenting transaction risk distributions and explainable model insights.`,
+    tech: ['Python', 'Scikit-Learn', 'SHAP', 'Streamlit', 'Pandas', 'NumPy'],
+    category: 'ai-ml',
+    impactMetric: 'Probability-based risk scoring',
     thumbnail: null,
-    githubUrl: 'https://github.com/kartik-chouhan/scrape-hub',
+    githubUrl: 'https://github.com/KartikChouhan03/RiskShield',
     liveUrl: null,
     featured: false,
-    completedAt: '2023-08',
+    completedAt: '2023-11-01',
+  },
+
+  // ── Project 5: Foodify ──────────────────────────────────────────────────────
+  {
+    id: 'foodify',
+    title: 'Foodify',
+    shortDescription: 'Full-stack food ordering platform with Stripe/Razorpay integrations and an admin panel.',
+    longDescription: `Foodify is a complete food ordering and restaurant management platform built using the MERN stack. It includes a frontend customer application for user sign-ups, menu search, cart configurations, and secure online checkouts powered by Stripe and Razorpay integrations. The backend utilizes Express and Node.js with JSON Web Tokens (JWT) for secure authentication. An interactive administration dashboard enables restaurant operators to upload food items via Multer, manage menu availability, and track delivery logs dynamically.`,
+    tech: ['React', 'Node.js', 'Express', 'MongoDB', 'Stripe', 'Razorpay', 'JWT', 'Vite'],
+    category: 'backend',
+    impactMetric: 'Complete ordering & admin flow',
+    thumbnail: null,
+    githubUrl: 'https://github.com/KartikChouhan03/Foodify-food_delivery_app',
+    liveUrl: null,
+    featured: false,
+    completedAt: '2023-08-01',
   },
 ];
 
