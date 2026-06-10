@@ -1,0 +1,328 @@
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.backdrop {
+  position: absolute;
+  inset: 0;
+  background: var(--bg-void);
+  opacity: 0.7;
+}
+
+.modalWindow {
+  position: relative;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-lg);
+  width: min(100%, 960px);
+  max-height: 90vh;
+  overflow: hidden;
+  display: flex;
+  z-index: 10;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+.modalContentGrid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  width: 100%;
+  max-height: inherit;
+}
+
+/* ── Visual Pane (Left) ────────────────────────────────────────────────── */
+.visualPane {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: var(--bg-void);
+}
+
+.thumbnail {
+  object-fit: cover;
+}
+
+.proceduralThumbnail {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+  background: linear-gradient(135deg, var(--bg-surface), var(--bg-void));
+  overflow: hidden;
+}
+
+.gridOverlay {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.glowNode {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  border-radius: var(--radius-full);
+  background: radial-gradient(circle, var(--accent-primary-glow) 0%, transparent 70%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* ── Details Pane (Right) ───────────────────────────────────────────────── */
+.detailsPane {
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  max-height: 90vh;
+}
+
+.paneScrollArea {
+  overflow-y: auto;
+  padding-right: 0.5rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Custom scrollbar for scroll area */
+.paneScrollArea::-webkit-scrollbar {
+  width: 5px;
+}
+
+.paneScrollArea::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.paneScrollArea::-webkit-scrollbar-thumb {
+  background: var(--border-default);
+  border-radius: var(--radius-full);
+}
+
+.closeBtn {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  background: transparent;
+  border: none;
+  color: var(--text-ghost);
+  cursor: pointer;
+  z-index: 20;
+  padding: 0.5rem;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 
+    color var(--duration-fast) var(--ease-expo-out),
+    background-color var(--duration-fast) var(--ease-expo-out);
+}
+
+.closeBtn:hover {
+  color: var(--text-primary);
+  background: var(--border-subtle);
+}
+
+.metaRow {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin-bottom: 0.75rem;
+}
+
+.categoryBadge {
+  font-family: var(--font-heading);
+  font-size: var(--text-xxs);
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--accent-primary);
+}
+
+.dateInfo {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--text-ghost);
+}
+
+.title {
+  font-family: var(--font-heading);
+  font-size: var(--text-xl);
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 1.5rem;
+  line-height: 1.15;
+}
+
+/* Impact metric box */
+.impactCard {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: var(--accent-primary-dim);
+  border: 1px solid var(--border-accent);
+  border-radius: var(--radius-md);
+  padding: 0.85rem 1.125rem;
+  margin-bottom: 1.75rem;
+}
+
+.impactIcon {
+  color: var(--accent-primary);
+  flex-shrink: 0;
+}
+
+.impactLabel {
+  display: block;
+  font-family: var(--font-body);
+  font-size: var(--text-xxs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+}
+
+.impactValue {
+  font-family: var(--font-heading);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  color: var(--accent-primary);
+  margin: 0;
+}
+
+.longDesc {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  line-height: 1.75;
+  margin-bottom: 1.75rem;
+}
+
+.longDesc p {
+  margin-bottom: 1rem;
+}
+
+.longDesc p:last-child {
+  margin-bottom: 0;
+}
+
+.sectionHeading {
+  font-family: var(--font-heading);
+  font-size: var(--text-xxs);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+}
+
+.techZone {
+  margin-bottom: 2rem;
+}
+
+.techStack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.linksRow {
+  display: flex;
+  gap: 1rem;
+  margin-top: auto;
+  padding-top: 1.5rem;
+}
+
+.linkButton, .linkButtonPrimary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-body);
+  font-size: var(--text-xxs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.75rem 1.25rem;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  text-decoration: none;
+  transition: 
+    color var(--duration-fast) var(--ease-expo-out),
+    background-color var(--duration-fast) var(--ease-expo-out),
+    border-color var(--duration-fast) var(--ease-expo-out),
+    box-shadow var(--duration-fast) var(--ease-expo-out);
+}
+
+.linkButton {
+  background: transparent;
+  border: 1px solid var(--border-default);
+  color: var(--text-primary);
+}
+
+.linkButton:hover {
+  border-color: var(--text-primary);
+  background: var(--border-subtle);
+}
+
+.linkButtonPrimary {
+  background: var(--accent-primary);
+  color: var(--bg-void);
+  border: 1px solid var(--accent-primary);
+}
+
+.linkButtonPrimary:hover {
+  background: #00e092;
+  border-color: #00e092;
+  box-shadow: 0 4px 15px var(--accent-primary-glow);
+}
+
+/* ── Responsive rules ────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .modalOverlay {
+    padding: 1rem;
+  }
+
+  .modalWindow {
+    max-height: 85vh;
+  }
+
+  .modalContentGrid {
+    grid-template-columns: 1fr;
+    overflow-y: auto;
+  }
+
+  .visualPane {
+    aspect-ratio: 16/10;
+  }
+
+  .detailsPane {
+    padding: 1.5rem;
+    max-height: none;
+    overflow: visible;
+  }
+
+  .paneScrollArea {
+    overflow: visible;
+    max-height: none;
+  }
+
+  .linksRow {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .linkButton, .linkButtonPrimary {
+    width: 100%;
+    justify-content: center;
+  }
+}

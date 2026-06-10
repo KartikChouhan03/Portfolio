@@ -1,0 +1,8 @@
+.glowText {
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--accent-primary);
+  /* Safely manages stroke overlapping with fill space on Windows Chrome */
+  paint-order: stroke fill;
+  /* Glowing drop-shadow */
+  filter: drop-shadow(0 0 10px rgba(0, 245, 160, 0.35));
+}

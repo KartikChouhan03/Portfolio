@@ -1,0 +1,150 @@
+.wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  aspect-ratio: 1;
+  margin-inline: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.mapRing {
+  fill: transparent;
+  stroke: var(--border-default);
+  stroke-width: 1px;
+  stroke-dasharray: 4 4;
+}
+
+.spokeLine {
+  stroke: rgba(255, 255, 255, 0.02);
+  stroke-width: 1px;
+}
+
+.ringLabel {
+  font-family: var(--font-heading);
+  font-size: var(--text-xxs);
+  font-weight: 500;
+  fill: var(--text-ghost);
+  text-anchor: middle;
+  letter-spacing: 1.5px;
+}
+
+.centerOuter {
+  fill: var(--bg-void);
+  stroke: var(--accent-primary);
+  stroke-width: 1.5px;
+}
+
+.centerInner {
+  fill: var(--accent-primary);
+  filter: drop-shadow(0 0 6px var(--accent-primary));
+}
+
+/* ── Connection Lines ── */
+.connectionLine {
+  fill: transparent;
+  stroke: var(--border-default);
+  stroke-opacity: 0.15;
+  stroke-width: 1px;
+  transition: 
+    stroke var(--duration-fast) var(--ease-expo-out),
+    stroke-width var(--duration-fast) var(--ease-expo-out),
+    stroke-opacity var(--duration-fast) var(--ease-expo-out);
+}
+
+.connectionHighlighted {
+  stroke: var(--accent-primary);
+  stroke-opacity: 0.6;
+  stroke-width: 1.5px;
+}
+
+/* ── Nodes ── */
+.nodeGroup {
+  cursor: pointer;
+}
+
+.nodeCircle {
+  fill: var(--bg-void);
+  stroke-width: 1.5px;
+  transform-origin: 0 0;
+  transition: 
+    fill var(--duration-fast) var(--ease-expo-out),
+    stroke var(--duration-fast) var(--ease-expo-out),
+    transform var(--duration-fast) var(--ease-expo-out),
+    filter var(--duration-fast) var(--ease-expo-out);
+}
+
+.nodeCore .nodeCircle {
+  stroke: var(--accent-primary);
+}
+.nodeSecondary .nodeCircle {
+  stroke: var(--accent-secondary);
+}
+.nodeFamiliarity .nodeCircle {
+  stroke: var(--text-ghost);
+  stroke-dasharray: 2 2;
+}
+
+.nodeText {
+  font-family: var(--font-body);
+  font-size: var(--text-xxs);
+  font-weight: 500;
+  fill: var(--text-muted);
+  pointer-events: none;
+  transition: 
+    fill var(--duration-fast) var(--ease-expo-out),
+    font-weight var(--duration-fast) var(--ease-expo-out);
+}
+
+.nodeTextLearning {
+  font-style: italic;
+}
+
+/* Highlighted state */
+.nodeHighlighted .nodeCircle {
+  fill: var(--accent-primary);
+  filter: drop-shadow(0 0 4px var(--accent-primary));
+  transform: scale(1.15);
+}
+
+.nodeSecondary.nodeHighlighted .nodeCircle {
+  fill: var(--accent-secondary);
+  filter: drop-shadow(0 0 4px var(--accent-secondary));
+}
+
+.nodeFamiliarity.nodeHighlighted .nodeCircle {
+  fill: var(--text-secondary);
+  filter: drop-shadow(0 0 4px var(--text-secondary));
+  stroke-dasharray: none;
+}
+
+.nodeHighlighted .nodeText {
+  fill: var(--text-primary);
+  font-weight: 600;
+}
+
+.hoverPulse {
+  fill: transparent;
+  stroke: var(--accent-primary);
+  stroke-width: 1px;
+  transform-origin: 0 0;
+  animation: pulseNodeRing 1.5s ease-out infinite;
+}
+
+@keyframes pulseNodeRing {
+  0% {
+    transform: scale(0.6);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+}

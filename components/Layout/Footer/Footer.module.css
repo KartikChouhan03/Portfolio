@@ -1,0 +1,134 @@
+.footer {
+  background: var(--surface);
+  border-top: 1px solid var(--border-subtle);
+  padding-block: 3.5rem;
+  margin-top: auto;
+  position: relative;
+  overflow: hidden;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  text-align: center;
+  position: relative;
+}
+
+/* ── Brand Monogram ──────────────────────────────────────────────────────── */
+
+.brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.monogram {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: var(--text-xl);
+  color: var(--text-primary);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.tagline {
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+}
+
+/* ── Socials ─────────────────────────────────────────────────────────────── */
+
+.socials {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.socialLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  color: var(--text-muted);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.01);
+  transition: all var(--duration-fast) var(--ease-expo-out);
+}
+
+.socialLink:hover {
+  color: var(--accent-primary);
+  background-color: var(--accent-primary-dim);
+  border-color: var(--border-accent);
+  transform: translateY(-2px);
+}
+
+/* ── Copyright & Location ────────────────────────────────────────────────── */
+
+.meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.copyright {
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+}
+
+.location {
+  font-family: var(--font-body);
+  font-size: var(--text-xxs);
+  color: var(--text-ghost);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* ── Back to Top Button ─────────────────────────────────────────────────── */
+
+.scrollTopButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: transparent;
+  color: var(--text-muted);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--ease-expo-out);
+}
+
+.scrollTopButton:hover {
+  color: var(--text-primary);
+  border-color: var(--text-primary);
+  background-color: var(--bg-elevated);
+}
+
+/* Desktop layout adjustment */
+@media (min-width: 768px) {
+  .wrapper {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    text-align: left;
+    gap: 1.5rem;
+  }
+
+  .brand {
+    align-items: flex-start;
+  }
+
+  .meta {
+    align-items: flex-end;
+    margin-left: auto;
+  }
+}

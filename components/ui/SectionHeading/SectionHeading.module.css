@@ -1,0 +1,65 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--section-heading-gap);
+}
+
+/* Center alignment variant */
+.center {
+    align-items: center;
+    text-align: center;
+}
+
+/* ── Heading ──────────────────────────────────────────────────────────────── */
+
+.heading {
+    font-family: var(--font-heading);
+    font-size: var(--text-2xl);
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1.1;
+
+    /* Prevent orphan words at narrow widths */
+    text-wrap: balance;
+}
+
+/* ── Accent line ──────────────────────────────────────────────────────────── */
+
+.accentLine {
+    width: var(--accent-line-width);
+    /* 40px */
+    height: var(--accent-line-height);
+    /* 2px  */
+    background: var(--accent-primary);
+    border-radius: var(--radius-full);
+    flex-shrink: 0;
+
+    /*
+    Phase 2 animation hook:
+    transform-origin: 0 50% allows a scaleX(0 → 1) animation
+    that draws the line from left to right.
+    On .center variant, origin shifts to center (50% 50%).
+  */
+    transform-origin: 0 50%;
+}
+
+.center .accentLine {
+    transform-origin: 50% 50%;
+}
+
+/* ── Subtitle ─────────────────────────────────────────────────────────────── */
+
+.subtitle {
+    font-family: var(--font-body);
+    font-size: var(--text-sm);
+    font-weight: 400;
+    color: var(--text-muted);
+    line-height: 1.6;
+    max-width: 52ch;
+    margin: 0;
+}
+
+.center .subtitle {
+    text-align: center;
+}

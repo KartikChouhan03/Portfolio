@@ -1,0 +1,66 @@
+:root {
+  /* ── Color Palette ───────────────────────────────────────────────────────── */
+  --bg-void: #020205;
+  --bg-base: #0a0b10;
+  --bg-surface: #10131a;
+  --bg-elevated: #161a24;
+  --bg-glass: rgba(10, 11, 16, 0.7);
+
+  --accent-primary: #00f5a0;
+  --accent-primary-dim: rgba(0, 245, 160, 0.08);
+  --accent-primary-glow: rgba(0, 245, 160, 0.3);
+  --accent-secondary: #00d2ff;
+  --accent-secondary-dim: rgba(0, 210, 255, 0.08);
+  --accent-tertiary: #b026ff;
+  --accent-tertiary-dim: rgba(176, 38, 255, 0.08);
+
+  --text-primary: #ffffff;
+  --text-secondary: #e2e8f0;
+  --text-muted: #b8bcc8; /* Raised contrast */
+  --text-ghost: #71717a; /* Decorative text only */
+
+  --border-subtle: rgba(255, 255, 255, 0.04);
+  --border-default: rgba(255, 255, 255, 0.08);
+  --border-accent: rgba(0, 245, 160, 0.3);
+
+  /* ── Layout & Stacking ───────────────────────────────────────────────────── */
+  --z-navbar: 40;
+  --z-cursor: 100;
+  --navbar-height: 64px;
+  --container-width: 1400px;
+
+  /* ── Glassmorphism ───────────────────────────────────────────────────────── */
+  --glass-bg: var(--bg-glass);
+  --glass-blur: blur(20px);
+  --glass-saturate: saturate(180%);
+
+  /* ── Typography (Sizing Scales) ────────────────────────────────────────── */
+  --text-xxs: 0.7rem;
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 2.25rem;
+  --text-hero: clamp(4rem, 8vw, 8rem);
+
+  /* ── Section Headings ────────────────────────────────────────────────────── */
+  --section-heading-gap: 0.5rem;
+  --accent-line-width: 40px;
+  --accent-line-height: 2px;
+
+  /* ── Animation Specifications ────────────────────────────────────────────── */
+  --duration-fast: 0.2s;
+  --duration-medium: 0.4s;
+  --duration-slow: 0.8s;
+
+  --ease-expo-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* ── Shape Aesthetics ────────────────────────────────────────────────────── */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  --radius-full: 9999px;
+}

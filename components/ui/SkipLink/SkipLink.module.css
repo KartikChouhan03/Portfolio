@@ -1,0 +1,37 @@
+.skipLink {
+    /* Position: off-screen above the viewport by default */
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%) translateY(-100%);
+    z-index: var(--z-cursor);
+    /* Above everything — including modals */
+
+    /* Appearance when visible */
+    display: inline-flex;
+    align-items: center;
+    padding: 0.75rem 1.75rem;
+    background: var(--accent-primary);
+    color: var(--bg-void);
+    font-family: var(--font-body);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    text-decoration: none;
+    white-space: nowrap;
+
+    /* Bottom corners rounded — top is flush with viewport edge */
+    border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+
+    /* Smooth slide down on focus */
+    transition: transform var(--duration-fast) var(--ease-expo-out);
+}
+
+/* Slide down into view when focused */
+.skipLink:focus,
+.skipLink:focus-visible {
+    transform: translateX(-50%) translateY(0);
+    /* Override global :focus-visible outline — the background provides sufficient contrast */
+    outline: 3px solid var(--bg-void);
+    outline-offset: -3px;
+}

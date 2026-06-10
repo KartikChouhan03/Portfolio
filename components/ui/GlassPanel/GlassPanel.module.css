@@ -1,0 +1,39 @@
+.panel {
+  /* Use CSS variables for safe composable transformations */
+  --panel-tilt: 0deg;
+  --panel-scale: 1;
+  transform: rotate(var(--panel-tilt)) scale(var(--panel-scale));
+
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur) var(--glass-saturate);
+  -webkit-backdrop-filter: var(--glass-blur) var(--glass-saturate);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+  
+  transition: 
+    border-color var(--duration-fast) var(--ease-expo-out),
+    transform var(--duration-fast) var(--ease-expo-out),
+    box-shadow var(--duration-fast) var(--ease-expo-out),
+    background-color var(--duration-fast) var(--ease-expo-out);
+}
+
+.hoverable:hover {
+  border-color: var(--border-accent);
+  box-shadow: 0 10px 30px rgba(0, 245, 160, 0.05);
+  background: rgba(22, 26, 36, 0.5); /* Semi-transparent bg-elevated */
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.clickable:hover {
+  --panel-scale: 1.01; /* Slightly larger on hover if clickable */
+}
+
+.clickable:active {
+  --panel-scale: 0.98;
+}
