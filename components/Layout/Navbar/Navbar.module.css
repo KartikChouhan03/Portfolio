@@ -1,7 +1,7 @@
 /* ── Header shell ────────────────────────────────────────────────────────── */
 
 .header {
-    position: fixed;
+    position: sticky;
     top: 0;
     left: 0;
     right: 0;
@@ -10,13 +10,13 @@
     height: var(--navbar-height);
     /* 64px */
 
-    /* Very subtle glass — almost invisible */
-    background: rgba(10, 11, 16, 0.5);
+    /* Glassmorphism using CSS variables */
+    background: var(--bg-glass);
     backdrop-filter: blur(12px) saturate(140%);
     -webkit-backdrop-filter: blur(12px) saturate(140%);
 
-    /* Hairline border — barely visible */
-    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    /* Hairline border */
+    border-bottom: 1px solid var(--border-subtle);
 
     isolation: isolate;
 }

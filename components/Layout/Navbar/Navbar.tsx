@@ -4,12 +4,13 @@ import { cn } from '@/lib/utils';
 import { meta } from '@/data/meta';
 import { NavProgress } from './NavProgress';
 import { AnimationToggle } from './AnimationToggle';
+import { ThemeToggle } from './ThemeToggle';
 import styles from './Navbar.module.css';
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Navbar
 //
-// Minimal sticky header — logo left, animation toggle + Hire Me right.
+// Minimal sticky header — logo left, animation toggle + Theme toggle + Hire Me right.
 // Navigation links have moved to the floating Dock component.
 //
 // Kept intentionally lightweight so it doesn't compete with the Hero section.
@@ -34,6 +35,7 @@ export function Navbar() {
         {/* Right actions */}
         <div className={styles.navActions}>
           <AnimationToggle />
+          <ThemeToggle />
           <a
             href="#contact"
             className={styles.hireButton}

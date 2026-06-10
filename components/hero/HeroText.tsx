@@ -58,11 +58,11 @@ export default function HeroText() {
       </motion.p>
 
       <motion.div className={styles.actions} variants={itemAnimationVariants}>
-        <Button variant="primary" href="#projects">
-          View Projects
+        <Button variant="primary" href="https://drive.google.com/file/d/1IlcbOPjAhZSWTrTNFmjkyNX_9ZAcg72X/view?usp=sharing">
+          View Resume
         </Button>
-        <Button variant="secondary" href="#contact">
-          Contact Me
+        <Button variant="secondary" href="#projects">
+          View Projects
         </Button>
       </motion.div>
     </motion.div>

@@ -4,6 +4,7 @@ import { useRef, useState } from 'react';
 import { useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
 import { getHardwareLevel } from '@/lib/three/threeUtils';
+import { useTheme } from '@/components/providers/ThemeProvider';
 
 interface NeuralParticlesProps {
   paused?: boolean;
@@ -58,6 +59,8 @@ function initializeParticles(): ParticleData {
 
 export function NeuralParticles({ paused = false }: NeuralParticlesProps) {
   const pointsRef = useRef<THREE.Points>(null);
+  const { theme } = useTheme();
+  const isDark = theme === 'dark';
   
   // Initialize state once lazily during initial mounting
   const [particleData] = useState<ParticleData>(() => initializeParticles());
@@ -111,13 +114,13 @@ export function NeuralParticles({ paused = false }: NeuralParticlesProps) {
         />
       </bufferGeometry>
       <pointsMaterial
-        color="#00f5a0"
+        color={isDark ? "#00f5a0" : "#0d9488"}
         size={0.03}
         sizeAttenuation={true}
         transparent={true}
-        opacity={0.4}
+        opacity={isDark ? 0.4 : 0.55}
         depthWrite={false}
-        blending={THREE.AdditiveBlending}
+        blending={isDark ? THREE.AdditiveBlending : THREE.NormalBlending}
       />
     </points>
   );

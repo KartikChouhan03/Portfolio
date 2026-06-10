@@ -4,6 +4,7 @@ import { useRef, useMemo, useState } from 'react';
 import { useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
 import { buildNodePositions } from '@/lib/three/threeUtils';
+import { useTheme } from '@/components/providers/ThemeProvider';
 
 interface NeuralGraphProps {
   paused?: boolean;
@@ -72,6 +73,8 @@ function initializeGraph(count: number): GraphData {
 export function NeuralGraph({ paused = false }: NeuralGraphProps) {
   const meshRef = useRef<THREE.InstancedMesh>(null);
   const linesRef = useRef<THREE.LineSegments>(null);
+  const { theme } = useTheme();
+  const isDark = theme === 'dark';
   const count = 60;
 
   // Initialize graph data once lazily in state
@@ -201,11 +204,11 @@ export function NeuralGraph({ paused = false }: NeuralGraphProps) {
           />
         </bufferGeometry>
         <lineBasicMaterial
-          color="#00f5a0"
+          color={isDark ? "#00f5a0" : "#0d9488"}
           transparent={true}
-          opacity={0.22}
+          opacity={isDark ? 0.22 : 0.3}
           depthWrite={false}
-          blending={THREE.AdditiveBlending}
+          blending={isDark ? THREE.AdditiveBlending : THREE.NormalBlending}
         />
       </lineSegments>
 
@@ -218,11 +221,11 @@ export function NeuralGraph({ paused = false }: NeuralGraphProps) {
       >
         <sphereGeometry args={[0.075, 8, 8]} />
         <meshBasicMaterial
-          color="#00f5a0"
+          color={isDark ? "#00f5a0" : "#0d9488"}
           transparent={true}
-          opacity={0.8}
+          opacity={isDark ? 0.8 : 0.9}
           depthWrite={false}
-          blending={THREE.AdditiveBlending}
+          blending={isDark ? THREE.AdditiveBlending : THREE.NormalBlending}
         />
       </instancedMesh>
     </group>

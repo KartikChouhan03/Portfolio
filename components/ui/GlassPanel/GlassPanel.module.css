@@ -22,8 +22,8 @@
 
 .hoverable:hover {
   border-color: var(--border-accent);
-  box-shadow: 0 10px 30px rgba(0, 245, 160, 0.05);
-  background: rgba(22, 26, 36, 0.5); /* Semi-transparent bg-elevated */
+  box-shadow: 0 10px 30px var(--accent-primary-dim);
+  background: var(--bg-elevated);
 }
 
 .clickable {

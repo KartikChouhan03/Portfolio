@@ -130,7 +130,7 @@
 .metricCard:hover {
   border-color: var(--border-accent);
   transform: translateY(-3px);
-  box-shadow: 0 10px 25px rgba(0, 245, 160, 0.04);
+  box-shadow: 0 10px 25px var(--accent-primary-dim);
 }
 
 .metricValue {

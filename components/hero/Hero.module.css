@@ -4,7 +4,7 @@
   min-height: calc(100vh - 64px);
   display: flex;
   align-items: center;
-  background: radial-gradient(circle at 75% 50%, rgba(0, 245, 160, 0.04) 0%, transparent 65%);
+  background: radial-gradient(circle at 75% 50%, var(--accent-primary-dim) 0%, transparent 65%);
   border-bottom: 1px solid var(--border-subtle);
   overflow: hidden;
   /* Extra top padding so content sits in the visual centre of the freed space */
@@ -112,7 +112,7 @@
 /* ── Responsive breakpoints ──────────────────────────────────────────────── */
 @media (max-width: 768px) {
   .hero {
-    background: radial-gradient(circle at 50% 30%, rgba(0, 245, 160, 0.05) 0%, transparent 60%);
+    background: radial-gradient(circle at 50% 30%, var(--accent-primary-dim) 0%, transparent 60%);
     /* Extra bottom padding so dock doesn't overlap the content/buttons */
     padding-block: 4rem 7rem;
   }

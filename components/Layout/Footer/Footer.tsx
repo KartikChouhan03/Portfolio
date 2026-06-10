@@ -76,35 +76,35 @@ export function Footer() {
               {meta.lastName[0]}
             </span>
             <p className={styles.tagline}>{meta.role}</p>
-          </div>
 
-          {/* Social links */}
-          <div className={styles.socials} aria-label="Social media links">
-            <a
-              href={meta.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.socialLink}
-              aria-label="GitHub Profile"
-            >
-              <GithubIcon size={18} />
-            </a>
-            <a
-              href={meta.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.socialLink}
-              aria-label="LinkedIn Profile"
-            >
-              <LinkedinIcon size={18} />
-            </a>
-            <a
-              href={`mailto:${meta.email}`}
-              className={styles.socialLink}
-              aria-label="Send Email"
-            >
-              <Mail size={18} />
-            </a>
+            {/* Social links */}
+            <div className={styles.socials} aria-label="Social media links">
+              <a
+                href={meta.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.socialLink}
+                aria-label="GitHub Profile"
+              >
+                <GithubIcon size={18} />
+              </a>
+              <a
+                href={meta.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.socialLink}
+                aria-label="LinkedIn Profile"
+              >
+                <LinkedinIcon size={18} />
+              </a>
+              <a
+                href={`mailto:${meta.email}`}
+                className={styles.socialLink}
+                aria-label="Send Email"
+              >
+                <Mail size={18} />
+              </a>
+            </div>
           </div>
 
           {/* Copyright & Meta */}

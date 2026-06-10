@@ -281,8 +281,8 @@
 }
 
 .linkButtonPrimary:hover {
-  background: #00e092;
-  border-color: #00e092;
+  background: var(--accent-primary-hover);
+  border-color: var(--accent-primary-hover);
   box-shadow: 0 4px 15px var(--accent-primary-glow);
 }
 

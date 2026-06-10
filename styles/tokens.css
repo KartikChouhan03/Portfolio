@@ -9,8 +9,11 @@
   --accent-primary: #00f5a0;
   --accent-primary-dim: rgba(0, 245, 160, 0.08);
   --accent-primary-glow: rgba(0, 245, 160, 0.3);
+  --accent-primary-hover: #00e092;
   --accent-secondary: #00d2ff;
   --accent-secondary-dim: rgba(0, 210, 255, 0.08);
+  --accent-secondary-glow: rgba(0, 210, 255, 0.2);
+  --border-secondary: rgba(0, 210, 255, 0.2);
   --accent-tertiary: #b026ff;
   --accent-tertiary-dim: rgba(176, 38, 255, 0.08);
 
@@ -63,4 +66,38 @@
   --radius-md: 8px;
   --radius-lg: 16px;
   --radius-full: 9999px;
+}
+
+/* ── Light Mode Override ─────────────────────────────────────────────────── */
+:root[data-theme="light"],
+.light-mode {
+  /* Soft, low-glare slate background system (no pure white) */
+  --bg-void: #e1e4eb;          /* Soft cool slate-200 */
+  --bg-base: #ebedf2;          /* Softer, low-glare slate-150 for main layout */
+  --bg-surface: #f4f6fa;       /* Very soft off-white with low-glare light-blue tint */
+  --bg-elevated: #dbe0ea;      /* Soft slate-250 for hover states */
+  --bg-glass: rgba(244, 246, 250, 0.75);
+
+  /* Sophisticated and readable Cyber Teal / Indigo color theme */
+  --accent-primary: #0d9488;
+  --accent-primary-dim: rgba(13, 148, 136, 0.08);
+  --accent-primary-glow: rgba(13, 148, 136, 0.15);
+  --accent-primary-hover: #0f766e;
+  
+  --accent-secondary: #0284c7;
+  --accent-secondary-dim: rgba(2, 132, 199, 0.08);
+  --accent-secondary-glow: rgba(2, 132, 199, 0.15);
+  --border-secondary: rgba(2, 132, 199, 0.25);
+  
+  --accent-tertiary: #7c3aed;
+  --accent-tertiary-dim: rgba(124, 58, 237, 0.08);
+
+  --text-primary: #0f172a;
+  --text-secondary: #334155;
+  --text-muted: #64748b;
+  --text-ghost: #94a3b8;
+
+  --border-subtle: rgba(15, 23, 42, 0.04);
+  --border-default: rgba(15, 23, 42, 0.08);
+  --border-accent: rgba(13, 148, 136, 0.25);
 }

@@ -137,6 +137,7 @@ export function Dock() {
                 }}
                 className={styles.pill}
             >
+
                 {navItems.map((item, index) => {
                     const isActive = activeSection === item.id;
                     const isHovered = hovered === item.id;

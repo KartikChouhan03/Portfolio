@@ -114,3 +114,38 @@ body.intro-done footer {
     opacity 0.8s var(--ease-expo-out),
     transform 0.8s var(--ease-expo-out);
 }
+
+/* ── Custom Scrollbar ────────────────────────────────────────────────────── */
+
+/* Chrome, Safari, Edge, and Opera */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-void);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-default);
+  border: 2px solid var(--bg-void);
+  border-radius: var(--radius-full);
+  transition: background var(--duration-fast) var(--ease-in-out);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-primary-glow);
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: var(--accent-primary);
+}
+
+/* Firefox */
+@supports (scrollbar-color: auto) {
+  html {
+    scrollbar-width: thin;
+    scrollbar-color: var(--border-default) var(--bg-void);
+  }
+}

@@ -23,7 +23,7 @@
 }
 
 .spokeLine {
-  stroke: rgba(255, 255, 255, 0.02);
+  stroke: var(--border-subtle);
   stroke-width: 1px;
 }
 
@@ -118,7 +118,7 @@
 }
 
 .nodeCircleBackdrop {
-  fill: #12141c;
+  fill: var(--bg-surface);
   stroke: var(--border-default);
   stroke-width: 1.2px;
   transform-origin: 0 0;
@@ -132,19 +132,19 @@
 /* Highlighted state */
 .nodeHighlighted .nodeCircleBackdrop {
   stroke: var(--accent-primary);
-  fill: #161a29;
-  filter: drop-shadow(0 0 6px rgba(0, 245, 160, 0.25));
+  fill: var(--bg-elevated);
+  filter: drop-shadow(0 0 6px var(--accent-primary-glow));
   transform: scale(1.15);
 }
 
 .nodeSecondary.nodeHighlighted .nodeCircleBackdrop {
   stroke: var(--accent-secondary);
-  filter: drop-shadow(0 0 6px rgba(96, 165, 250, 0.25));
+  filter: drop-shadow(0 0 6px var(--accent-secondary-dim));
 }
 
 .nodeFamiliarity.nodeHighlighted .nodeCircleBackdrop {
   stroke: var(--text-secondary);
-  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.15));
+  filter: drop-shadow(0 0 6px var(--border-default));
 }
 
 .nodeHighlighted .nodeImage {
